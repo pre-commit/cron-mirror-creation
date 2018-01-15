@@ -18,6 +18,7 @@ REPOS = (
     ('mirrors-csslint', 'node', 'csslint', CSS),
     ('mirrors-eslint', 'node', 'eslint', JS),
     ('mirrors-fixmyjs', 'node', 'fixmyjs', JS),
+    ('mirrors-isort', 'python', 'isort', PY),
     ('mirrors-jshint', 'node', 'jshint', JS),
     ('mirrors-puppet-lint', 'ruby', 'puppet-lint', PP),
     ('mirrors-pylint', 'python', 'pylint', PY),
