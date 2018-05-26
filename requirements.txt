@@ -1,2 +1,2 @@
 pre-commit
-pre-commit-mirror-maker>=0.4.0,<=0.4.999
+pre-commit-mirror-maker>=1.0.0

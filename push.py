@@ -5,26 +5,36 @@ import sys
 import tempfile
 
 
-CSS = r'\.css$'
-JS = r'\.js$'
-PP = r'\.pp$'
-PY = r'\.py$'
-RB = r'\.rb$'
-SCSS = r'\.scss$'
+def lang_pkg(lang, pkg):
+    return (f'--language={lang}', f'--package-name={pkg}')
+
+
+CSS = '--types=css'
+JS = '--types=javascript'
+PP = '--types=puppet'
+PY = '--types=python'
+RB = '--types=ruby'
+SCSS = '--types=scss'
 
 REPOS = (
-    ('mirrors-autopep8', 'python', 'autopep8', PY, '--args=-i'),
-    ('mirrors-coffeelint', 'node', 'coffeelint', r'\.(js|coffee)$'),
-    ('mirrors-csslint', 'node', 'csslint', CSS),
-    ('mirrors-eslint', 'node', 'eslint', JS),
-    ('mirrors-fixmyjs', 'node', 'fixmyjs', JS),
-    ('mirrors-isort', 'python', 'isort', PY),
-    ('mirrors-jshint', 'node', 'jshint', JS),
-    ('mirrors-puppet-lint', 'ruby', 'puppet-lint', PP),
-    ('mirrors-pylint', 'python', 'pylint', PY),
-    ('mirrors-ruby-lint', 'ruby', 'ruby-lint', RB),
-    ('mirrors-scss-lint', 'ruby', 'scss_lint', SCSS, '--entry=scss-lint'),
-    ('mirrors-yapf', 'python', 'yapf', PY, '--args=-i'),
+    ('mirrors-autopep8', *lang_pkg('python', 'autopep8'), PY, '--args=-i'),
+    (
+        'mirrors-coffeelint',
+        *lang_pkg('node', 'coffeelint'), r'--files-regex=\.(js|coffee)$',
+    ),
+    ('mirrors-csslint', *lang_pkg('node', 'csslint'), CSS),
+    ('mirrors-eslint', *lang_pkg('node', 'eslint'), JS),
+    ('mirrors-fixmyjs', *lang_pkg('node', 'fixmyjs'), JS),
+    ('mirrors-isort', *lang_pkg('python', 'isort'), PY),
+    ('mirrors-jshint', *lang_pkg('node', 'jshint'), JS),
+    ('mirrors-puppet-lint', *lang_pkg('ruby', 'puppet-lint'), PP),
+    ('mirrors-pylint', *lang_pkg('python', 'pylint'), PY),
+    ('mirrors-ruby-lint', *lang_pkg('ruby', 'ruby-lint'), RB),
+    (
+        'mirrors-scss-lint',
+        *lang_pkg('ruby', 'scss_lint'), SCSS, '--entry=scss-lint',
+    ),
+    ('mirrors-yapf', *lang_pkg('python', 'yapf'), PY, '--args=-i'),
 )
 
 
@@ -33,6 +43,7 @@ def main():
     parser.add_argument('--dry-run', action='store_true')
     args = parser.parse_args()
 
+    token = os.environ['GH_TOKEN']
     os.environ['GIT_AUTHOR_NAME'] = 'pre-commit'
     os.environ['GIT_AUTHOR_EMAIL'] = 'pre-commit@example.com'
     os.environ['GIT_COMMITTER_NAME'] = 'pre-commit'
@@ -41,12 +52,10 @@ def main():
     with tempfile.TemporaryDirectory() as tmpdir:
         for repo in REPOS:
             repo_name, *cmd_args = repo
-            token = os.environ['GH_TOKEN']
             repodir = os.path.join(tmpdir, repo_name)
             subprocess.check_call((
                 'git', 'clone',
-                f'https://{token}@github.com/pre-commit/{repo_name}',
-                repodir,
+                f'https://{token}@github.com/pre-commit/{repo_name}', repodir,
             ))
             subprocess.check_call((
                 sys.executable, '-m', 'pre_commit_mirror_maker.main',
