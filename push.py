@@ -27,6 +27,10 @@ REPOS = (
     ('mirrors-fixmyjs', *lang_pkg('node', 'fixmyjs'), JS),
     ('mirrors-isort', *lang_pkg('python', 'isort'), PY),
     ('mirrors-jshint', *lang_pkg('node', 'jshint'), JS),
+    (
+        'mirrors-mypy',
+        *lang_pkg('python', 'mypy'), PY, '--args=--ignore-missing-imports',
+    ),
     ('mirrors-puppet-lint', *lang_pkg('ruby', 'puppet-lint'), PP),
     ('mirrors-pylint', *lang_pkg('python', 'pylint'), PY),
     ('mirrors-ruby-lint', *lang_pkg('ruby', 'ruby-lint'), RB),
