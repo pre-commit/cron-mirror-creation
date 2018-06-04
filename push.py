@@ -3,9 +3,10 @@ import os.path
 import subprocess
 import sys
 import tempfile
+from typing import Tuple
 
 
-def lang_pkg(lang, pkg):
+def lang_pkg(lang: str, pkg: str) -> Tuple[str, ...]:
     return (f'--language={lang}', f'--package-name={pkg}')
 
 
@@ -42,7 +43,7 @@ REPOS = (
 )
 
 
-def main():
+def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument('--dry-run', action='store_true')
     args = parser.parse_args()
@@ -71,6 +72,7 @@ def main():
                 ))
             else:
                 print('Skipping push due to dry run...')
+    return 0
 
 
 if __name__ == '__main__':
