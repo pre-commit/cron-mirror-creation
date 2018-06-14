@@ -30,7 +30,8 @@ REPOS = (
     ('mirrors-jshint', *lang_pkg('node', 'jshint'), JS),
     (
         'mirrors-mypy',
-        *lang_pkg('python', 'mypy'), PY, '--args=--ignore-missing-imports',
+        *lang_pkg('python', 'mypy'), PY,
+        '--args=--ignore-missing-imports,--scripts-are-modules',
     ),
     ('mirrors-puppet-lint', *lang_pkg('ruby', 'puppet-lint'), PP),
     ('mirrors-pylint', *lang_pkg('python', 'pylint'), PY),
