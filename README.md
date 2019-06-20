@@ -7,7 +7,7 @@ Periodically update pre-commit mirror repositories.
 
 This was written to solve [this issue][1].
 
-Currently it is cronned weekly using [travis ci cron][2].
+Currently it is cronned daily using [travis ci cron][2].
 
 [1]: https://github.com/pre-commit/pre-commit/issues/265
 [2]: https://docs.travis-ci.com/user/cron-jobs/
