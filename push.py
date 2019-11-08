@@ -50,6 +50,9 @@ def main() -> int:
     parser.add_argument('--dry-run', action='store_true')
     args = parser.parse_args()
 
+    if os.environ.get('TRAVIS_PULL_REQUEST') == 'true':
+        print('PR: skipping')
+        return 0
     token = os.environ['GH_TOKEN']
     os.environ['GIT_AUTHOR_NAME'] = 'pre-commit'
     os.environ['GIT_AUTHOR_EMAIL'] = 'pre-commit@example.com'
