@@ -1,9 +1,0 @@
-language: python
-install: pip install virtualenv
-script: make push
-env:
-    global:
-        secure: "lfEPrPhtvKPeOs7o36I2mgeaXQiUKjUI2XXQfiVm1Eb+IwOfoIvCTorwLHqpAGgOCGiDRb+4N3c2541NMjxrshscuV3xPWlewU0u54cbYPKpCUpe9Rwy917XOvbNKNEdYGqo26rwRX1e1T1ukoUTAkblJk/b6XO1NhtCxP0iCfwyAeL1f5fVfx3dEw7ZItcjzAvM3IZQc39xayrNM89LnR35sVta1dslwEinPav5AwwTgubf0EqI0fovjrzusxWBt1axCzFwOaxWohFBEmTcR8dES6Ql/is5GnhoAPYiXr/XRs6ySzGhXiBNAFB6GOMjy2cXGMewt4w4+7rFHqXj0GipTuzVp3gdHweT/emh27CXxNL+K5leDerm6mgfWAcjczFoOtZigZfeSKmXmMt/3Dln3NEf81bxhwflQ+LCPYB/05oHrzYlRi/mKSMmGfrx0rZb5M8I+FNjHwLEg0eWTEy0ITWBWQtTG/jn0tRWe/DyomsuPOOijyvkUt+OKmIJfO3PAqhVLFaUaZKKfjQt7pHQyiGLPhdS7I0x0nSJ4y9+GLDTHV9Pdod7RBOgZs3KzBN92hJZn58apV8iUNi4olTKmmHkpmonMboF3qtjOwKLPhoTw//Y1PFJDgDztkcs0XeXHrjcAMUX15gLBoYr7PLXGyCDolv36jnd9Gu3iOw="
-cache:
-    directories:
-        - "$HOME/.cache/pip"

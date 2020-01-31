@@ -1,3 +1,11 @@
+# DEPRECATED
+
+This repository has been replaced with github actions on each of the mirror
+repositories.  Here is [an example].
+
+[an example]: https://github.com/pre-commit/mirrors-autopep8/blob/master/.github/workflows/main.yml
+___
+
 [![Build Status](https://travis-ci.org/pre-commit/cron-mirror-creation.svg?branch=master)](https://travis-ci.org/pre-commit/cron-mirror-creation)
 
 cron-mirror-creation
